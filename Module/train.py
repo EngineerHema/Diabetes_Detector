@@ -12,7 +12,7 @@ CHOSEN_FEATURES = [
     "Outcome"
 ]
 
-LEARNING_RATE = 0.009
+LEARNING_RATE = 0.1
 
 
 class Trainer:
@@ -74,11 +74,13 @@ class Trainer:
             self.W_history.append(float(self.W[0]))
             self.J_history.append(self.compute_cost(self.W))
 
+            old_W = self.W.copy()
             # Update weights and bias
             self.W -= LEARNING_RATE * dW
             self.B -= LEARNING_RATE * dB
 
-
+            if np.all(np.abs(old_W - self.W) < 1e-10):
+                break
 
     def __compute_cost(self):
         m = len(self.Y_train)
