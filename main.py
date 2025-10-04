@@ -5,6 +5,7 @@ if __name__ == "__main__":
     trainer.train_with_gradient_descent(epochs=100000)
     accuracy = trainer.evaluate()
     print(f"Test Accuracy: {accuracy:.4f}")
+    trainer.plot_J_W()
 
 
 '''
